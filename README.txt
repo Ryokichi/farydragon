@@ -2,6 +2,6 @@ Componetes:
 Bianca Soliman Bariani
 Caio 
 Felipe
-Heitor 
+Heitor Ryokichi Nakamura
 William Marques Santos
 
