@@ -1,7 +1,7 @@
 Componetes:
-Bianca
-Caio
+Bianca Soliman Bariani
+Caio 
 Felipe
-Heitor
-William
+Heitor 
+William Marques Santos
 
