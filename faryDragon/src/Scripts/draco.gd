@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
-
+var ptos_vida = 10
+var ptos_vida_max = 10
 var velocidade = Vector2(0,0)
 var velocidade_atual = Vector2(0,0)
 
@@ -25,7 +26,19 @@ func _ready():
 	pass
 	
 	
+func get_ptos_vida():
+	return self.ptos_vida
+	
+	
+func get_ptos_vida_max():
+	return self.ptos_vida_max
+	
+	
+#warning-ignore:unused_argument
 func _process(dt):
+	verifica_entradas()
+
+func verifica_entradas():
 	if (Input.is_action_just_pressed("ui_space")):
 		if (estado_atual < estado_lista.pulando):
 			velocidade.y = -800
@@ -35,19 +48,28 @@ func _process(dt):
 			set_estado(estado_lista.planando)
 		elif (estado_atual == estado_lista.planando):
 			set_estado(estado_lista.pulando)
-		pass
+		
 		
 	if Input.is_action_pressed("ui_right"):
-#		velocidade.x += globais.vel_horizontal
-		velocidade.x += 600*dt
+		velocidade.x += globais.vel_horizontal
 		$Sprite.set_flip_h(false)
-		pass
+		
 		
 	if Input.is_action_pressed("ui_left"):
-#		velocidade.x -= globais.vel_horizontal
-		velocidade.x -= 600*dt
+		velocidade.x -= globais.vel_horizontal
 		$Sprite.set_flip_h(true)
-		pass
+		
+		
+	if Input.is_action_just_released("ui_right"):
+		velocidade.x = 0
+		
+		
+	if Input.is_action_just_released("ui_left"):
+		velocidade.x = 0
+		
+		
+	if Input.is_action_just_pressed("key_d"):
+		aplica_dano(1)
 		
 		
 func _physics_process(dt):
@@ -65,6 +87,7 @@ func _physics_process(dt):
 			
 	if (estado_atual == estado_lista.voando):
 		pass
+		
 	elif (estado_atual == estado_lista.planando):
 		velocidade.y += globais.gravidade * 3/4
 		if (velocidade.y > 40):
@@ -113,40 +136,39 @@ func verifica_estados():
 			planar()
 		estado_lista.voando:
 			voar()
-	pass
 	
 	
-func muda_animacao():
-	
-	pass
+func aplica_dano(dano):
+	self.ptos_vida -= dano
+	if (self.ptos_vida < 0):
+		self.ptos_vida = 0
 	
 	
 func andar():
 	print("andando")
 	$Animation.play("walk")
-	pass
+	
 	
 func correr():
 	print ("correndo")
 	$Animation.play("run")
-	pass
-
+	
+	
 func parar():
 	print ("parando")
 	$Animation.play("idle")
-	pass
+	
 	
 func planar():
 	print ("planando")
 	$Animation.play("fly")
-	pass
+	
 	
 func voar():
 	print ("voando")
 	$Animation.play("fly")
-	pass
-
+	
+	
 func pular():
 	print ("pulando")
 	$Animation.play("jump")
-	pass

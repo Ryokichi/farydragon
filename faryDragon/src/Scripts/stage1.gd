@@ -5,11 +5,10 @@ extends Node
 # var b = "textvar"
 
 func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
+	$GameHud/Interface.updateVidaMax($Draco.get_ptos_vida_max())
+	$GameHud/Interface.updateVida($Draco.get_ptos_vida())
 	pass
 
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
+func _process(delta):
+	$GameHud/Interface.updateVida($Draco.get_ptos_vida())
+	pass
