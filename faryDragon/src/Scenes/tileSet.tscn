@@ -3,56 +3,73 @@
 [ext_resource path="res://assets/img/ericktile.png" type="Texture" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
 
 [node name="Node" type="Node"]
+editor/display_folded = true
 
-[node name="ericktile" type="Sprite" parent="." index="0"]
-
+[node name="tile1col" type="Sprite" parent="."]
 position = Vector2( 16, 16 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 32, 32 )
-_sections_unfolded = [ "Region", "Transform" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="ericktile" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="tile1col"]
 
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ericktile/StaticBody2D" index="0"]
-
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tile1col/StaticBody2D"]
 shape = SubResource( 1 )
-_sections_unfolded = [ "Z Index" ]
 
-[node name="ericktile2" type="Sprite" parent="." index="1"]
-
-position = Vector2( 64, 16 )
+[node name="tile2col" type="Sprite" parent="."]
+position = Vector2( -180, 60 )
 texture = ExtResource( 1 )
+offset = Vector2( 244, -44 )
 region_enabled = true
 region_rect = Rect2( 32, 0, 32, 32 )
-_sections_unfolded = [ "Region", "Transform" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="ericktile2" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="tile2col"]
 
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ericktile2/StaticBody2D" index="0"]
-
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tile2col/StaticBody2D"]
 shape = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
 
+[node name="tile3col" type="Sprite" parent="."]
+position = Vector2( -138.1, 59.2649 )
+texture = ExtResource( 1 )
+offset = Vector2( 244, -44 )
+region_enabled = true
+region_rect = Rect2( 96.25, 0, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="tile3col"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="tile3col/StaticBody2D"]
+polygon = PoolVector2Array( 227.422, -59.8436, 228.135, -28.2126, 259.29, -27.9748 )
+
+[node name="tile4col" type="Sprite" parent="."]
+position = Vector2( -96.6376, 59.8489 )
+texture = ExtResource( 1 )
+offset = Vector2( 244, -44 )
+region_enabled = true
+region_rect = Rect2( 96.25, 32.25, 32.25, 32.25 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="tile4col"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="tile4col/StaticBody2D"]
+polygon = PoolVector2Array( 227.945, -28.6191, 259.771, -60.4459, 260.355, -28.3271 )
+
+[node name="tile1" type="Sprite" parent="."]
+position = Vector2( -58.6791, 59.8489 )
+texture = ExtResource( 1 )
+offset = Vector2( 244, -44 )
+region_enabled = true
+region_rect = Rect2( -0.75, 0, 33.25, 31.5 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="tile1"]
+
+[node name="tile2" type="Sprite" parent="."]
+position = Vector2( -19.8446, 59.8489 )
+texture = ExtResource( 1 )
+offset = Vector2( 244, -44 )
+region_enabled = true
+region_rect = Rect2( 31.75, 0.25, 32.5, 31.25 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="tile2"]
 
