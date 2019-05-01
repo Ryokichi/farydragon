@@ -6,6 +6,7 @@
 extents = Vector2( 16, 16 )
 
 [node name="Node" type="Node"]
+editor/display_folded = true
 
 [node name="subEC" type="Sprite" parent="."]
 editor/display_folded = true
