@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
-var ptos_vida = 10
-var ptos_vida_max = 10
+
 var velocidade = Vector2(0,0)
 var velocidade_atual = Vector2(0,0)
+var orientacao = Vector2(1, 0)
 
 var estado_atual = 0
 var estado_anterior = 0
@@ -26,19 +26,7 @@ func _ready():
 	pass
 	
 	
-func get_ptos_vida():
-	return self.ptos_vida
-	
-	
-func get_ptos_vida_max():
-	return self.ptos_vida_max
-	
-	
-#warning-ignore:unused_argument
 func _process(dt):
-	verifica_entradas()
-
-func verifica_entradas():
 	if (Input.is_action_just_pressed("ui_space")):
 		if (estado_atual < estado_lista.pulando):
 			velocidade.y = -800
@@ -48,28 +36,21 @@ func verifica_entradas():
 			set_estado(estado_lista.planando)
 		elif (estado_atual == estado_lista.planando):
 			set_estado(estado_lista.pulando)
-		
+		pass
 		
 	if Input.is_action_pressed("ui_right"):
-		velocidade.x += globais.vel_horizontal
+#		velocidade.x += globais.vel_horizontal
+		orientacao.x = 1
+		velocidade.x += 600*dt
 		$Sprite.set_flip_h(false)
-		
+		pass
 		
 	if Input.is_action_pressed("ui_left"):
-		velocidade.x -= globais.vel_horizontal
+#		velocidade.x -= globais.vel_horizontal
+		orientacao.x = -1
+		velocidade.x -= 600*dt
 		$Sprite.set_flip_h(true)
-		
-		
-	if Input.is_action_just_released("ui_right"):
-		velocidade.x = 0
-		
-		
-	if Input.is_action_just_released("ui_left"):
-		velocidade.x = 0
-		
-		
-	if Input.is_action_just_pressed("key_d"):
-		aplica_dano(1)
+		pass
 		
 		
 func _physics_process(dt):
@@ -79,7 +60,7 @@ func _physics_process(dt):
 		else:
 			velocidade.x -= 250*dt
 	elif (velocidade.x < 0):
-		print("Vel menor que 0 ", velocidade.x)
+#		print("Vel menor que 0 ", velocidade.x)
 		if (abs(velocidade.x) > globais.vel_terminal.x):
 			velocidade.x = -1*globais.vel_terminal.x
 		else:
@@ -87,7 +68,6 @@ func _physics_process(dt):
 			
 	if (estado_atual == estado_lista.voando):
 		pass
-		
 	elif (estado_atual == estado_lista.planando):
 		velocidade.y += globais.gravidade * 3/4
 		if (velocidade.y > 40):
@@ -102,7 +82,7 @@ func set_velocidades():
 	velocidade.normalized()
 	velocidade_atual = move_and_slide(velocidade, Vector2(0, -1), true, 5)
 	velocidade = velocidade_atual
-	print(velocidade_atual, estado_atual)
+#	print(velocidade_atual, estado_atual)
 	
 	if (estado_atual >= estado_lista.pulando && is_on_floor()):
 		set_estado(estado_lista.parado)
@@ -136,39 +116,40 @@ func verifica_estados():
 			planar()
 		estado_lista.voando:
 			voar()
+	pass
 	
 	
-func aplica_dano(dano):
-	self.ptos_vida -= dano
-	if (self.ptos_vida < 0):
-		self.ptos_vida = 0
+func muda_animacao():
+	
+	pass
 	
 	
 func andar():
-	print("andando")
+#	print("andando")
 	$Animation.play("walk")
-	
+	pass
 	
 func correr():
-	print ("correndo")
+#	print ("correndo")
 	$Animation.play("run")
-	
-	
+	pass
+
 func parar():
-	print ("parando")
+#	print ("parando")
 	$Animation.play("idle")
-	
+	pass
 	
 func planar():
-	print ("planando")
+#	print ("planando")
 	$Animation.play("fly")
-	
+	pass
 	
 func voar():
-	print ("voando")
+#	print ("voando")
 	$Animation.play("fly")
-	
-	
+	pass
+
 func pular():
-	print ("pulando")
+#	print ("pulando")
 	$Animation.play("jump")
+	pass

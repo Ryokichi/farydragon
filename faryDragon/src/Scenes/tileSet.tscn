@@ -1,58 +1,199 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/img/ericktile.png" type="Texture" id=1]
+[ext_resource path="res://assets/img/terra.png" type="Texture" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
 
 [node name="Node" type="Node"]
+editor/display_folded = true
 
-[node name="ericktile" type="Sprite" parent="." index="0"]
+[node name="subEC" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 16.3773, 102.037 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 32, 32, 32 )
 
+[node name="StaticBody2D" type="StaticBody2D" parent="subEC"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="subEC/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="PlatE" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 16.3773, 229.346 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 96, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="PlatE"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlatE/StaticBody2D"]
+polygon = PoolVector2Array( -15.381, -15.6833, -15.381, -10.2025, -14.8828, -6.21651, -12.3915, -3.72525, -9.40199, -2.2305, -4.75165, -2.06441, -2.92473, 0.260757, 0.230865, 3.08418, 4.71512, 5.24327, 8.70113, 6.73802, 12.8532, 7.56844, 15.8427, 7.9006, 15.8427, -15.6833 )
+
+[node name="Plat" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 65.1449, 229.346 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 64, 96, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Plat"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Plat/StaticBody2D"]
+polygon = PoolVector2Array( -16.1504, 7.56844, -13.4931, 7.40236, -10.3375, 6.40585, -7.68015, 5.90761, -4.69063, 5.90761, -1.03679, 7.07019, 1.95271, 8.23277, 3.94572, 7.23628, 7.1013, 6.07368, 9.59256, 5.74153, 13.4125, 6.9041, 16.0698, 7.40236, 16.2359, -15.8493, -15.8182, -15.8493 )
+
+[node name="PlatD" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 115.453, 229.346 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 96, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="PlatD"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlatD/StaticBody2D"]
+polygon = PoolVector2Array( -15.9686, 7.56844, -11.8165, 7.56844, -6.83395, 6.57195, -2.51579, 4.9111, 0.639801, 2.75201, 3.13106, 0.925095, 4.45973, -1.73224, 8.27965, -2.56267, 9.60832, -2.2305, 12.7639, -3.89133, 14.2587, -6.21651, 15.0891, -8.3756, 15.9195, -14.0224, 15.9195, -15.5172, -15.8025, -15.6833 )
+
+[node name="subC" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 64.3013, 102.037 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 64, 32, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="subC"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="subC/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="subDC" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 112.225, 102.037 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 32, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="subDC"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="subDC/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="subE" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 16.3773, 147.878 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 32, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="subE"]
+
+[node name="sub" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 64.3013, 147.903 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 64, 32, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="sub"]
+
+[node name="subD" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 112.225, 147.439 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 64, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="subD"]
+
+[node name="subE2" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 16.3773, 190.486 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 64, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="subE2"]
+
+[node name="sub2" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 64.3013, 189.483 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 64, 64, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="sub2"]
+
+[node name="subD2" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 112.225, 188.507 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 64, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="subD2"]
+
+[node name="chaoEC" type="Sprite" parent="."]
+editor/display_folded = true
 position = Vector2( 16, 16 )
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 32, 32 )
-_sections_unfolded = [ "Region", "Transform" ]
+region_rect = Rect2( 32, 0, 32, 32 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="ericktile" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="chaoEC"]
 
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ericktile/StaticBody2D" index="0"]
-
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chaoEC/StaticBody2D"]
 shape = SubResource( 1 )
-_sections_unfolded = [ "Z Index" ]
 
-[node name="ericktile2" type="Sprite" parent="." index="1"]
+[node name="ChaoC" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 67.0039, 16.2899 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 64, 0, 32, 32 )
 
-position = Vector2( 64, 16 )
+[node name="StaticBody2D" type="StaticBody2D" parent="ChaoC"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChaoC/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="ChaoDC" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 111.554, 17.0168 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 0, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ChaoDC"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChaoDC/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="chaoE" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 16, 57.8863 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 32, 0, 32, 32 )
-_sections_unfolded = [ "Region", "Transform" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="ericktile2" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="chaoE"]
 
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
+[node name="Chao" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 61.42, 57.338 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 64, 0, 32, 32 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ericktile2/StaticBody2D" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Chao"]
 
-shape = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
+[node name="ChaoD" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 109.252, 58.9603 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 0, 32, 32 )
 
+[node name="StaticBody2D" type="StaticBody2D" parent="ChaoD"]
 
