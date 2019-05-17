@@ -15,8 +15,8 @@ func _ready():
 	$EsqArea.position.x = window_size.x * -0.5
 	$DirArea.position.x = window_size.x * 0.5
 	$CentArea/CollBox.shape.set_extents(Vector2(window_size.x * 0.13,window_size.y*2))
-	$EsqArea/CollBox.shape.set_extents(Vector2(window_size.x * 0.23,window_size.y*2))
-	$DirArea/CollBox.shape.set_extents(Vector2(window_size.x * 0.23,window_size.y*2))
+	$EsqArea/CollBox.shape.set_extents(Vector2(window_size.x * 0.20,window_size.y*2))
+	$DirArea/CollBox.shape.set_extents(Vector2(window_size.x * 0.20,window_size.y*2))
 
 
 func _process(delta):

@@ -3,8 +3,8 @@
 [ext_resource path="res://src/Scripts/draco.gd" type="Script" id=1]
 [ext_resource path="res://assets/img/drago.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 29.3701, 29.2783 )
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 15, 28 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "fly"
@@ -84,8 +84,8 @@ vframes = 5
 hframes = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 4.69833, -1 )
-shape = SubResource( 1 )
+position = Vector2( 5, 0 )
+shape = SubResource( 8 )
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 autoplay = "idle"

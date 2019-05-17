@@ -40,16 +40,14 @@ func _process(dt):
 		pass
 		
 	if Input.is_action_pressed("ui_right"):
-#		velocidade.x += globais.vel_horizontal
 		orientacao.x = 1
-		velocidade.x += 600*dt
+		velocidade.x += globais.vel_horizontal
 		$Sprite.set_flip_h(false)
 		pass
 		
 	if Input.is_action_pressed("ui_left"):
-#		velocidade.x -= globais.vel_horizontal
 		orientacao.x = -1
-		velocidade.x -= 600*dt
+		velocidade.x -= globais.vel_horizontal
 		$Sprite.set_flip_h(true)
 		pass
 		
@@ -59,29 +57,35 @@ func _physics_process(dt):
 		if (velocidade.x > globais.vel_terminal.x):
 			velocidade.x = globais.vel_terminal.x
 		else:
-			velocidade.x -= 250*dt
+			velocidade.x -= globais.diminuicao_vel_h*dt
 	elif (velocidade.x < 0):
 #		print("Vel menor que 0 ", velocidade.x)
 		if (abs(velocidade.x) > globais.vel_terminal.x):
 			velocidade.x = -1*globais.vel_terminal.x
 		else:
-			velocidade.x += 250*dt
+			velocidade.x += globais.diminuicao_vel_h*dt
 			
 	if (estado_atual == estado_lista.voando):
 		pass
 	elif (estado_atual == estado_lista.planando):
 		velocidade.y += globais.gravidade * 3/4
-		if (velocidade.y > 40):
-			velocidade.y = 40
+		if (velocidade.y > globais.queda_planagem):
+			velocidade.y = globais.queda_planagem
 	else:
 		velocidade.y += globais.gravidade
+		
+	if (velocidade.y > globais.vel_terminal.y):
+		velocidade.y = globais.vel_terminal.y
 		
 	set_velocidades()
 	
 	
 func set_velocidades():
+	if (velocidade.x > -1 && velocidade.x < 1):
+		velocidade.x = 0
+		
 	velocidade.normalized()
-	velocidade_atual = move_and_slide(velocidade, Vector2(0, -1), true, 5)
+	velocidade_atual = move_and_slide(velocidade, Vector2(0, -1), true, 3, 0.78, false)
 	velocidade = velocidade_atual
 #	print(velocidade_atual, estado_atual)
 	
