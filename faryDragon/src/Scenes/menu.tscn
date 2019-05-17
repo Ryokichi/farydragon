@@ -10,7 +10,6 @@
 [ext_resource path="res://assets/img/btn_back.png" type="Texture" id=8]
 
 [node name="menu" type="Node"]
-editor/display_folded = true
 script = ExtResource( 1 )
 
 [node name="bkg_menu" type="Sprite" parent="."]
@@ -23,7 +22,8 @@ texture = ExtResource( 3 )
 centered = false
 
 [node name="bkg_credits" type="Sprite" parent="."]
-position = Vector2( -1280, 0 )
+position = Vector2( -6.50287, -2.15839 )
+scale = Vector2( 0.322258, 0.321459 )
 texture = ExtResource( 4 )
 centered = false
 
@@ -74,7 +74,6 @@ drag_margin_bottom = 0.0
 editor_draw_screen = false
 
 [node name="Tween" type="Tween" parent="."]
-
 [connection signal="button_up" from="btn_start" to="." method="_on_btn_start_up"]
 [connection signal="button_up" from="btn_options" to="." method="_on_btn_options_up"]
 [connection signal="button_up" from="btn_credits" to="." method="_on_btn_credits_up"]
