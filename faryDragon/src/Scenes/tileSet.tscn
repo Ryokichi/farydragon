@@ -1,12 +1,17 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/img/terra.png" type="Texture" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 16 )
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16.2206, 14.9894 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 16.0158, 15.7185 )
+
 [node name="Node" type="Node"]
-editor/display_folded = true
 
 [node name="subEC" type="Sprite" parent="."]
 editor/display_folded = true
@@ -54,6 +59,7 @@ region_rect = Rect2( 96, 96, 32, 32 )
 [node name="StaticBody2D" type="StaticBody2D" parent="PlatD"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlatD/StaticBody2D"]
+position = Vector2( 0.145477, -0.29097 )
 polygon = PoolVector2Array( -15.9686, 7.56844, -11.8165, 7.56844, -6.83395, 6.57195, -2.51579, 4.9111, 0.639801, 2.75201, 3.13106, 0.925095, 4.45973, -1.73224, 8.27965, -2.56267, 9.60832, -2.2305, 12.7639, -3.89133, 14.2587, -6.21651, 15.0891, -8.3756, 15.9195, -14.0224, 15.9195, -15.5172, -15.8025, -15.6833 )
 
 [node name="subC" type="Sprite" parent="."]
@@ -196,4 +202,63 @@ region_enabled = true
 region_rect = Rect2( 96, 0, 32, 32 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="ChaoD"]
+
+[node name="flechas" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 17.7066, 269.383 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 128, 0, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="flechas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="flechas/StaticBody2D"]
+position = Vector2( -1, 1 )
+shape = SubResource( 2 )
+
+[node name="terra" type="Sprite" parent="."]
+position = Vector2( 63.6823, 268.361 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 128, 32, 32, 32 )
+
+[node name="lava" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 119.534, 267.339 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 160, 32, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="lava"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lava/StaticBody2D"]
+position = Vector2( -0.0510483, 0.306274 )
+shape = SubResource( 3 )
+
+[node name="lava2" type="Sprite" parent="."]
+position = Vector2( 118.979, 308.947 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 160, 64, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="lava2"]
+
+[node name="cerca" type="Sprite" parent="."]
+editor/display_folded = true
+show_behind_parent = true
+position = Vector2( 17.0255, 310.59 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 32, 31, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="cerca"]
+
+[node name="pedra" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 63.0012, 307.525 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 160, 0, 32, 32 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="pedra"]
 

@@ -4,3 +4,4 @@
 
 [node name="global" type="Node"]
 script = ExtResource( 1 )
+
