@@ -14,9 +14,9 @@ func _ready():
 	$CentArea.position.x = 0	
 	$EsqArea.position.x = window_size.x * -0.5
 	$DirArea.position.x = window_size.x * 0.5
-	$CentArea/CollBox.shape.set_extents(Vector2(window_size.x * 0.20,window_size.y*2))
-	$EsqArea/CollBox.shape.set_extents(Vector2(window_size.x * 0.10,window_size.y*2))
-	$DirArea/CollBox.shape.set_extents(Vector2(window_size.x * 0.10,window_size.y*2))
+	$CentArea/CollBox.shape.set_extents(Vector2(window_size.x * 0.13,window_size.y*2))
+	$EsqArea/CollBox.shape.set_extents(Vector2(window_size.x * 0.23,window_size.y*2))
+	$DirArea/CollBox.shape.set_extents(Vector2(window_size.x * 0.23,window_size.y*2))
 
 
 func _process(delta):
@@ -36,7 +36,7 @@ func _process(delta):
 
 
 func update_da_posicao (lado):
-	self.global_position.x = player.global_position.x + (window_size.x * 0.20 * lado)
+	self.global_position.x = player.global_position.x + ((window_size.x + 10)* 0.13 * lado)
 
 
 #Orientacao do corpo pode ter valores 1 ou -1 apenas

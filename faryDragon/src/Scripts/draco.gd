@@ -1,9 +1,10 @@
 extends KinematicBody2D
 
-
 var velocidade = Vector2(0,0)
 var velocidade_atual = Vector2(0,0)
 var orientacao = Vector2(1, 0)
+var vida_max = 83
+var vida_atual = vida_max - 10
 
 var estado_atual = 0
 var estado_anterior = 0
@@ -118,7 +119,12 @@ func verifica_estados():
 			voar()
 	pass
 	
-	
+func toma_dano (dano):
+	vida_atual -= dano
+	print("Tomou dano ", vida_atual)
+	if (vida_atual <= 0):
+		vida_atual = 0
+
 func muda_animacao():
 	
 	pass

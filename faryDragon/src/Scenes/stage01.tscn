@@ -223,7 +223,6 @@ texture = ExtResource( 5 )
 [node name="CamLimites" parent="." instance=ExtResource( 6 )]
 
 [node name="GUILayer" type="CanvasLayer" parent="."]
-editor/display_folded = true
 
 [node name="GUI" parent="GUILayer" instance=ExtResource( 7 )]
 margin_left = 50.0

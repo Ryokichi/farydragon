@@ -1,15 +1,17 @@
 extends Node
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+onready var player = $Draco
+onready var barra_vida = $GUILayer/GUI/BarraVida/Barra
+onready var marcador_vida = $GUILayer/GUI/BarraVida/Contador/Texto
 
 func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
+	barra_vida.set_max(player.vida_max)
+	marcador_vida.text = str(player.vida_atual) + "/" + str(player.vida_max)
 	pass
 
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
+func _process(delta):
+	if Input.is_action_just_pressed("ui_d"):
+		player.toma_dano(1)
+		
+	barra_vida.value = player.vida_atual
+	marcador_vida.text = str(player.vida_atual) + "/" + str(player.vida_max)
