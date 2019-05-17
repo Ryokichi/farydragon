@@ -3,6 +3,7 @@ extends KinematicBody2D
 
 var velocidade = Vector2(0,0)
 var velocidade_atual = Vector2(0,0)
+var orientacao = Vector2(1, 0)
 
 var estado_atual = 0
 var estado_anterior = 0
@@ -39,12 +40,14 @@ func _process(dt):
 		
 	if Input.is_action_pressed("ui_right"):
 #		velocidade.x += globais.vel_horizontal
+		orientacao.x = 1
 		velocidade.x += 600*dt
 		$Sprite.set_flip_h(false)
 		pass
 		
 	if Input.is_action_pressed("ui_left"):
 #		velocidade.x -= globais.vel_horizontal
+		orientacao.x = -1
 		velocidade.x -= 600*dt
 		$Sprite.set_flip_h(true)
 		pass
@@ -57,7 +60,7 @@ func _physics_process(dt):
 		else:
 			velocidade.x -= 250*dt
 	elif (velocidade.x < 0):
-		print("Vel menor que 0 ", velocidade.x)
+#		print("Vel menor que 0 ", velocidade.x)
 		if (abs(velocidade.x) > globais.vel_terminal.x):
 			velocidade.x = -1*globais.vel_terminal.x
 		else:
@@ -79,7 +82,7 @@ func set_velocidades():
 	velocidade.normalized()
 	velocidade_atual = move_and_slide(velocidade, Vector2(0, -1), true, 5)
 	velocidade = velocidade_atual
-	print(velocidade_atual, estado_atual)
+#	print(velocidade_atual, estado_atual)
 	
 	if (estado_atual >= estado_lista.pulando && is_on_floor()):
 		set_estado(estado_lista.parado)
@@ -122,31 +125,31 @@ func muda_animacao():
 	
 	
 func andar():
-	print("andando")
+#	print("andando")
 	$Animation.play("walk")
 	pass
 	
 func correr():
-	print ("correndo")
+#	print ("correndo")
 	$Animation.play("run")
 	pass
 
 func parar():
-	print ("parando")
+#	print ("parando")
 	$Animation.play("idle")
 	pass
 	
 func planar():
-	print ("planando")
+#	print ("planando")
 	$Animation.play("fly")
 	pass
 	
 func voar():
-	print ("voando")
+#	print ("voando")
 	$Animation.play("fly")
 	pass
 
 func pular():
-	print ("pulando")
+#	print ("pulando")
 	$Animation.play("jump")
 	pass

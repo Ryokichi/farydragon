@@ -1,11 +1,12 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/Scripts/stage1.gd" type="Script" id=1]
 [ext_resource path="res://src/tileset1.tres" type="TileSet" id=2]
 [ext_resource path="res://src/Scenes/draco.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/GUI/GUI.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/Scenes/plataformaMovel.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/img/BG_Vulcao_1.png" type="Texture" id=6]
+[ext_resource path="res://src/Scenes/plataformaMovel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/img/BG_Vulcao_1.png" type="Texture" id=5]
+[ext_resource path="res://src/Scenes/CamLimites.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/GUI/GUI.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "movimento 1"
@@ -140,13 +141,7 @@ tile_data = PoolIntArray( -196628, 3, 0, -196627, 3, 0, -196626, 3, 0, -196625, 
 position = Vector2( 124.809, 509.779 )
 collision/safe_margin = 0.01
 
-[node name="Camera2D" type="Camera2D" parent="Draco"]
-position = Vector2( -0.500366, 1.57153 )
-current = true
-
-[node name="GUI" parent="Draco/Camera2D" instance=ExtResource( 4 )]
-
-[node name="plataforma" parent="." instance=ExtResource( 5 )]
+[node name="plataforma" parent="." instance=ExtResource( 4 )]
 editor/display_folded = true
 position = Vector2( 7271.94, 1740 )
 collision/safe_margin = 0.01
@@ -157,7 +152,7 @@ playback_process_mode = 0
 playback_speed = 0.3
 "anims/movimento 1" = SubResource( 1 )
 
-[node name="plataforma2" parent="." instance=ExtResource( 5 )]
+[node name="plataforma2" parent="." instance=ExtResource( 4 )]
 editor/display_folded = true
 position = Vector2( 12664.1, 2022.6 )
 collision/safe_margin = 0.01
@@ -167,7 +162,7 @@ autoplay = "default"
 playback_speed = 0.3
 anims/default = SubResource( 2 )
 
-[node name="plataforma4" parent="." instance=ExtResource( 5 )]
+[node name="plataforma4" parent="." instance=ExtResource( 4 )]
 editor/display_folded = true
 position = Vector2( 12830.5, 1922.55 )
 collision/safe_margin = 0.01
@@ -177,7 +172,7 @@ autoplay = "default"
 playback_speed = 0.5
 anims/default = SubResource( 3 )
 
-[node name="plataforma3" parent="." instance=ExtResource( 5 )]
+[node name="plataforma3" parent="." instance=ExtResource( 4 )]
 editor/display_folded = true
 position = Vector2( 16936.7, 2085.74 )
 
@@ -186,7 +181,7 @@ autoplay = "default"
 playback_speed = 0.2
 anims/default = SubResource( 4 )
 
-[node name="plataforma5" parent="." instance=ExtResource( 5 )]
+[node name="plataforma5" parent="." instance=ExtResource( 4 )]
 editor/display_folded = true
 position = Vector2( 17099.8, 2032.29 )
 
@@ -195,7 +190,7 @@ autoplay = "default"
 playback_speed = 0.5
 anims/default = SubResource( 5 )
 
-[node name="plataforma6" parent="." instance=ExtResource( 5 )]
+[node name="plataforma6" parent="." instance=ExtResource( 4 )]
 editor/display_folded = true
 position = Vector2( 16861.6, 1858.91 )
 
@@ -204,7 +199,7 @@ autoplay = "default"
 playback_speed = 0.4
 anims/default = SubResource( 6 )
 
-[node name="plataforma7" parent="." instance=ExtResource( 5 )]
+[node name="plataforma7" parent="." instance=ExtResource( 4 )]
 editor/display_folded = true
 position = Vector2( 17480.8, 2263.84 )
 
@@ -214,6 +209,7 @@ playback_speed = 0.3
 anims/default = SubResource( 7 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+editor/display_folded = true
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0.2, 1 )
@@ -222,5 +218,15 @@ motion_mirroring = Vector2( 4005, 0 )
 [node name="BG_Vulcao_1" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
 position = Vector2( 1337.71, 1355.42 )
 scale = Vector2( 1, 1.5 )
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 
+[node name="CamLimites" parent="." instance=ExtResource( 6 )]
+
+[node name="GUILayer" type="CanvasLayer" parent="."]
+editor/display_folded = true
+
+[node name="GUI" parent="GUILayer" instance=ExtResource( 7 )]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 50.0
+margin_bottom = 50.0

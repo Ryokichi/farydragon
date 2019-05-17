@@ -73,7 +73,6 @@ drag_margin_bottom = 0.0
 editor_draw_screen = false
 
 [node name="Tween" type="Tween" parent="."]
-
 [connection signal="button_up" from="btn_start" to="." method="_on_btn_start_up"]
 [connection signal="button_up" from="btn_options" to="." method="_on_btn_options_up"]
 [connection signal="button_up" from="btn_credits" to="." method="_on_btn_credits_up"]
