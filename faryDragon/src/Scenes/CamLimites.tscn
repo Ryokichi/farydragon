@@ -36,11 +36,12 @@ current = true
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
 smoothing_enabled = true
-smoothing_speed = 1.5
+smoothing_speed = 2.0
 drag_margin_left = 1.0
 drag_margin_top = 1.0
 drag_margin_right = 1.0
 drag_margin_bottom = 1.0
+
 [connection signal="area_entered" from="CentArea" to="." method="_on_CentArea_area_entered"]
 [connection signal="area_exited" from="CentArea" to="." method="_on_CentArea_area_exited"]
 [connection signal="area_entered" from="EsqArea" to="." method="_on_EsqArea_area_entered"]

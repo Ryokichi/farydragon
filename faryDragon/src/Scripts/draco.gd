@@ -42,13 +42,15 @@ func _process(dt):
 	if Input.is_action_pressed("ui_right"):
 		orientacao.x = 1
 		velocidade.x += globais.vel_horizontal
-		$Sprite.set_flip_h(false)
+#		$Sprite.set_flip_h(false)
+		$Sprite.scale.x = 1
 		pass
 		
 	if Input.is_action_pressed("ui_left"):
 		orientacao.x = -1
 		velocidade.x -= globais.vel_horizontal
-		$Sprite.set_flip_h(true)
+#		$Sprite.set_flip_h(true)
+		$Sprite.scale.x = -1
 		pass
 		
 		
