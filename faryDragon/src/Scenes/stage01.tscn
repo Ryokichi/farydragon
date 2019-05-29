@@ -209,7 +209,6 @@ playback_speed = 0.3
 anims/default = SubResource( 7 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-editor/display_folded = true
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0.2, 1 )
@@ -229,3 +228,4 @@ margin_left = 50.0
 margin_top = 50.0
 margin_right = 50.0
 margin_bottom = 50.0
+

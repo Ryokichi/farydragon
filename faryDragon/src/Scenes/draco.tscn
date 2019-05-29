@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/Scripts/draco.gd" type="Script" id=1]
 [ext_resource path="res://assets/img/drago.png" type="Texture" id=2]
+[ext_resource path="res://assets/img/Dragao/dragao.png" type="Texture" id=3]
 
-[sub_resource type="CapsuleShape2D" id=8]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 16.7716
 height = 20.1653
 
@@ -105,7 +106,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ SubResource( 8 ) ]
+"values": [ SubResource( 1 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CollisionShape2D:position")
@@ -147,6 +148,22 @@ tracks/4/keys = {
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 1, 1 )
 
+[sub_resource type="Animation" id=8]
+resource_name = "andar"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 15 ]
+}
+
 [node name="Draco" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
@@ -160,7 +177,7 @@ frame = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -16.0755, 0.358482 )
-shape = SubResource( 8 )
+shape = SubResource( 1 )
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 autoplay = "idle"
@@ -174,4 +191,14 @@ anims/walk = SubResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CenterPoint"]
 shape = SubResource( 7 )
+
+[node name="Animation2" type="AnimationPlayer" parent="."]
+anims/andar = SubResource( 8 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 111.332, 104.388 )
+texture = ExtResource( 3 )
+vframes = 7
+hframes = 11
+frame = 15
 
