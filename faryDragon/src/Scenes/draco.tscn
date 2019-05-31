@@ -1,11 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/Scripts/draco.gd" type="Script" id=1]
 [ext_resource path="res://assets/img/drago.png" type="Texture" id=2]
 
-[sub_resource type="CapsuleShape2D" id=8]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 16.7716
-height = 20.1653
+height = 21.5513
 
 [sub_resource type="Animation" id=2]
 resource_name = "fly"
@@ -22,7 +22,7 @@ tracks/0/keys = {
 "values": [ 45, 49 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionShape2D:shape:extents")
+tracks/1/path = NodePath("CollShape:shape:extents")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -34,7 +34,7 @@ tracks/1/keys = {
 "values": [ Vector2( 33.262, 17.1751 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("CollisionShape2D:position")
+tracks/2/path = NodePath("CollShape:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -96,7 +96,7 @@ tracks/0/keys = {
 "values": [ 20, 30 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionShape2D:shape")
+tracks/1/path = NodePath("CollShape:shape")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -105,10 +105,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ SubResource( 8 ) ]
+"values": [ SubResource( 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("CollisionShape2D:position")
+tracks/2/path = NodePath("CollShape:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -120,7 +120,7 @@ tracks/2/keys = {
 "values": [ Vector2( -16.0755, 0.358482 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("CollisionShape2D:shape:radius")
+tracks/3/path = NodePath("CollShape:shape:radius")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -132,7 +132,7 @@ tracks/3/keys = {
 "values": [ 16.7716 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("CollisionShape2D:shape:height")
+tracks/4/path = NodePath("CollShape:shape:height")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -147,6 +147,9 @@ tracks/4/keys = {
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 1, 1 )
 
+[sub_resource type="CapsuleShape2D" id=8]
+radius = 17.1842
+
 [node name="Draco" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
@@ -158,9 +161,9 @@ vframes = 5
 hframes = 10
 frame = 20
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollShape" type="CollisionShape2D" parent="."]
 position = Vector2( -16.0755, 0.358482 )
-shape = SubResource( 8 )
+shape = SubResource( 1 )
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 autoplay = "idle"
@@ -171,7 +174,22 @@ anims/run = SubResource( 5 )
 anims/walk = SubResource( 6 )
 
 [node name="CenterPoint" type="Area2D" parent="."]
+space_override = 1
+collision_layer = 516
+collision_mask = 516
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CenterPoint"]
+position = Vector2( -16.0134, 0 )
 shape = SubResource( 7 )
 
+[node name="AreaDano" type="Area2D" parent="."]
+position = Vector2( -16, 0 )
+collision_mask = 8
+
+[node name="Shape" type="CollisionShape2D" parent="AreaDano"]
+shape = SubResource( 8 )
+
+[node name="Piscar" type="Timer" parent="."]
+wait_time = 0.15
+[connection signal="area_entered" from="AreaDano" to="." method="_on_AreaDano_area_entered"]
+[connection signal="timeout" from="Piscar" to="." method="_on_Piscar_timeout"]

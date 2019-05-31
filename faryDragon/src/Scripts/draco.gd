@@ -1,10 +1,13 @@
 extends KinematicBody2D
 
-var velocidade = Vector2(0,0)
-var velocidade_atual = Vector2(0,0)
+var velocidade = Vector2(0, 0)
+var velocidade_atual = Vector2(0, 0)
 var orientacao = Vector2(1, 0)
-var vida_max = 83
-var vida_atual = vida_max - 10
+var vida_max = 5
+var vida_atual = vida_max
+
+var delay_dano = 0
+var modulate_on = false
 
 var estado_atual = 0
 var estado_anterior = 0
@@ -20,14 +23,15 @@ var estado_lista = {
 var comportamento = {
 	"terrestre" : 0,
 	"aereo"     : 1,
-	"aquatico"  : 2
-}
+	"aquatico"  : 2}
 
 func _ready():
 	pass
 	
-	
 func _process(dt):
+	if (delay_dano > 0):
+		delay_dano -= dt
+		
 	if (Input.is_action_just_pressed("ui_space")):
 		if (estado_atual < estado_lista.pulando):
 			velocidade.y = -800
@@ -126,13 +130,17 @@ func verifica_estados():
 	pass
 	
 func toma_dano (dano):
+	if (delay_dano > 0):
+		return
+		
 	vida_atual -= dano
+	delay_dano = 1.5
+	$Piscar.start()
 	print("Tomou dano ", vida_atual)
 	if (vida_atual <= 0):
 		vida_atual = 0
 
 func muda_animacao():
-	
 	pass
 	
 	
@@ -165,3 +173,23 @@ func pular():
 #	print ("pulando")
 	$Animation.play("jump")
 	pass
+
+func _on_AreaDano_area_entered(area):
+	if (area.has_method("get_tipo")):
+		if (area.get_tipo() == "inimigo"):
+			self.toma_dano(1)
+
+func _on_Piscar_timeout():
+	if (modulate_on == false && delay_dano <= 0):
+		$Piscar.stop()
+		return
+		
+	if (modulate_on == false):
+		modulate_on = true
+		self.modulate = Color(0,0,0,0.5)
+	else:
+		modulate_on = false
+		self.modulate = Color(1,1,1,1)
+	
+	
+	
