@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+
+
 var velocidade = Vector2(0, 0)
 var velocidade_atual = Vector2(0, 0)
 var orientacao = Vector2(1, 0)
@@ -24,8 +26,10 @@ var comportamento = {
 	"terrestre" : 0,
 	"aereo"     : 1,
 	"aquatico"  : 2}
-
+	
+var hud_vida
 func _ready():
+	hud_vida= get_node("../GUILayer/GUI/HUD/Vidas")	
 	pass
 	
 func _process(dt):
@@ -132,11 +136,11 @@ func verifica_estados():
 func toma_dano (dano):
 	if (delay_dano > 0):
 		return
-		
+	
 	vida_atual -= dano
 	delay_dano = 1.5
 	$Piscar.start()
-	print("Tomou dano ", vida_atual)
+	hud_vida.atualiza_vida(vida_atual)
 	if (vida_atual <= 0):
 		vida_atual = 0
 

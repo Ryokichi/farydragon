@@ -12,8 +12,7 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_d"):
-		player.toma_dano(1)
-		hud_vidas.atualiza_vida(player.vida_atual)
+		player.toma_dano(1)		
 		
 	barra_vida.value = player.vida_atual
 	marcador_vida.text = str(player.vida_atual) + "/" + str(player.vida_max)
