@@ -37,7 +37,7 @@ func trocaElemento(lado):
 	self.rotacionaElelementos()
 	
 func tweenRotacao(obj, pos_fim, escala_fim):
-	var pos_ini = obj.position
+	var pos_ini    = obj.position
 	var escala_ini = obj.scale
 	
 	$Tween.interpolate_property(obj, "position", pos_ini, pos_fim, 0.2, Tween.TRANS_EXPO, Tween.EASE_IN, 0)
