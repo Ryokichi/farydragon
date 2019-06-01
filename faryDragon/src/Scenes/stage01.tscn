@@ -386,6 +386,7 @@ playback_speed = 0.3
 anims/default = SubResource( 7 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+editor/display_folded = true
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0.2, 1 )
@@ -406,7 +407,6 @@ margin_top = 50.0
 margin_right = 50.0
 margin_bottom = 50.0
 
-<<<<<<< HEAD
 [node name="Inimigo" parent="." instance=ExtResource( 8 )]
 editor/display_folded = true
 position = Vector2( 944.775, 517.752 )
@@ -471,5 +471,3 @@ anims/area = SubResource( 13 )
 
 [node name="morte" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1142, 562.865 )
-=======
->>>>>>> 9ec59691e91525d1c2fb4008250cbfbef090fab0
