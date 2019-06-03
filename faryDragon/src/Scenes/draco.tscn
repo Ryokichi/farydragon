@@ -309,8 +309,10 @@ shape = SubResource( 13 )
 [node name="Piscar" type="Timer" parent="."]
 wait_time = 0.15
 
-[node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 29.9694, -11.5791 )
+[node name="MouthPos" type="Position2D" parent="."]
+position = Vector2( 38.6559, -14.4856 )
 rotation = 1.5708
+z_index = -1
+
 [connection signal="area_entered" from="AreaDano" to="." method="_on_AreaDano_area_entered"]
 [connection signal="timeout" from="Piscar" to="." method="_on_Piscar_timeout"]

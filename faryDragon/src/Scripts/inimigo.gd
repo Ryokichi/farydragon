@@ -18,5 +18,4 @@ func dano(qtd):
 	vida -= qtd
 	if vida <= 0:
 		vivo = false
-		get_node("shape").queue_free()
 		queue_free()

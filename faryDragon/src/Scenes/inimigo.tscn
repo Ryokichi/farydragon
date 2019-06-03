@@ -52,3 +52,4 @@ script = ExtResource( 3 )
 
 [node name="Shape" type="CollisionShape2D" parent="CollArea"]
 shape = SubResource( 3 )
+

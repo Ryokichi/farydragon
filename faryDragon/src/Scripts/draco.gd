@@ -67,8 +67,8 @@ func _process(dt):
 	if (Input.is_action_just_pressed("ui_c")):
 		if ultimo_disparo <= 0:
 			var tiro = pre_tiro.instance()
-			tiro.set_global_position(get_node("Position2D").get_global_position())
-			get_node("../").add_child(tiro)
+			tiro.set_global_position(get_node("MouthPos").get_global_position())
+			get_node("../").add_child(tiro, true)
 			ultimo_disparo = intervalo
 		pass
 		
