@@ -3,7 +3,7 @@
 [ext_resource path="res://src/Scripts/draco.gd" type="Script" id=1]
 [ext_resource path="res://assets/img/Drago/Drago.png" type="Texture" id=2]
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=1]
 resource_name = "fly"
 length = 0.1
 loop = true
@@ -32,8 +32,7 @@ tracks/1/keys = {
 "values": [ Vector2( 15, -25 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "fly_old"
+[sub_resource type="Animation" id=2]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -71,8 +70,7 @@ tracks/2/keys = {
 "values": [ Vector2( 3.99976, 10.0376 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "idle"
+[sub_resource type="Animation" id=3]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -99,7 +97,7 @@ tracks/1/keys = {
 "values": [ Vector2( 15, -18 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -115,8 +113,7 @@ tracks/0/keys = {
 "values": [ 0, 9 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "jump"
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -142,9 +139,9 @@ tracks/1/keys = {
 "values": [ Vector2( 15, -15 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-
 [sub_resource type="Animation" id=6]
+
+[sub_resource type="Animation" id=7]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -160,8 +157,7 @@ tracks/0/keys = {
 "values": [ 10, 17 ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "walk"
+[sub_resource type="Animation" id=8]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -189,11 +185,11 @@ tracks/1/keys = {
 "values": [ Vector2( 14, -18 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=8]
+[sub_resource type="CapsuleShape2D" id=9]
 radius = 40.0
 height = 1.0
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -217,7 +213,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ SubResource( 8 ) ]
+"values": [ SubResource( 9 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CollShape:position")
@@ -256,15 +252,15 @@ tracks/4/keys = {
 "values": [ 20.1653 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=10]
-radius = 32.0
-height = 15.0
-
 [sub_resource type="CapsuleShape2D" id=11]
 radius = 32.0
 height = 15.0
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="CapsuleShape2D" id=12]
+radius = 32.0
+height = 15.0
+
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 1, 1 )
 
 [node name="Draco" type="KinematicBody2D"]
@@ -280,26 +276,26 @@ frame = 79
 [node name="Animation" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite")
 autoplay = "idle"
-anims/fly = SubResource( 13 )
-anims/fly_old = SubResource( 1 )
-anims/idle = SubResource( 2 )
-anims/idle_old = SubResource( 3 )
-anims/jump = SubResource( 4 )
-anims/jump_old = SubResource( 5 )
-anims/run_old = SubResource( 6 )
-anims/walk = SubResource( 7 )
-anims/walk_old = SubResource( 9 )
+anims/fly = SubResource( 1 )
+anims/fly_old = SubResource( 2 )
+anims/idle = SubResource( 3 )
+anims/idle_old = SubResource( 4 )
+anims/jump = SubResource( 5 )
+anims/jump_old = SubResource( 6 )
+anims/run_old = SubResource( 7 )
+anims/walk = SubResource( 8 )
+anims/walk_old = SubResource( 10 )
 
 [node name="CollShape" type="CollisionShape2D" parent="."]
 rotation = 1.5708
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [node name="AreaDano" type="Area2D" parent="."]
 collision_mask = 8
 
 [node name="Shape" type="CollisionShape2D" parent="AreaDano"]
 rotation = 1.5708
-shape = SubResource( 11 )
+shape = SubResource( 12 )
 
 [node name="CenterPoint" type="Area2D" parent="."]
 position = Vector2( 0, -40 )
@@ -308,9 +304,13 @@ collision_layer = 516
 collision_mask = 516
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CenterPoint"]
-shape = SubResource( 12 )
+shape = SubResource( 13 )
 
 [node name="Piscar" type="Timer" parent="."]
 wait_time = 0.15
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 29.9694, -11.5791 )
+rotation = 1.5708
 [connection signal="area_entered" from="AreaDano" to="." method="_on_AreaDano_area_entered"]
 [connection signal="timeout" from="Piscar" to="." method="_on_Piscar_timeout"]

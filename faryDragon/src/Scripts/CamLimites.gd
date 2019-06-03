@@ -1,4 +1,4 @@
-extends Node2D
+	extends Node2D
 
 onready var player    = get_node('../Draco');
 onready var player_cp  = get_node('../Draco/CenterPoint');
@@ -31,7 +31,7 @@ func _process(delta):
 #		update_da_posicao(orientacao_antiga.x)
 	
 	orientacao_antiga = orientacao_nova
-	self.global_position.y = player.global_position.y ####Verificar regra pos Y
+	self.global_position.y = player.global_position.y - 200####Verificar regra pos Y
 	pass
 
 

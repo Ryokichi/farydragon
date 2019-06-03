@@ -5,6 +5,8 @@ onready var barra_vida = $GUILayer/GUI/BarraVida/Barra
 onready var marcador_vida = $GUILayer/GUI/BarraVida/Contador/Texto
 onready var hud_vidas = $GUILayer/GUI/HUD/Vidas
 
+
+
 func _ready():
 	barra_vida.set_max(player.vida_max)
 	marcador_vida.text = str(player.vida_atual) + "/" + str(player.vida_max)
@@ -16,3 +18,4 @@ func _process(delta):
 		
 	barra_vida.value = player.vida_atual
 	marcador_vida.text = str(player.vida_atual) + "/" + str(player.vida_max)
+	

@@ -1,6 +1,8 @@
 extends KinematicBody2D
 
-
+var pre_tiro = preload("res://src/Scenes/tiro.tscn")
+var intervalo = .3
+var ultimo_disparo = 0
 
 var velocidade = Vector2(0, 0)
 var velocidade_atual = Vector2(0, 0)
@@ -10,6 +12,7 @@ var vida_atual = vida_max
 
 var delay_dano = 0
 var modulate_on = false
+
 
 var estado_atual = 0
 var estado_anterior = 0
@@ -61,6 +64,17 @@ func _process(dt):
 		$Sprite.scale.x = -1
 		pass
 		
+	if (Input.is_action_just_pressed("ui_c")):
+		if ultimo_disparo <= 0:
+			var tiro = pre_tiro.instance()
+			tiro.set_global_position(get_node("Position2D").get_global_position())
+			get_node("../").add_child(tiro)
+			ultimo_disparo = intervalo
+		pass
+		
+	if ultimo_disparo > 0:
+		ultimo_disparo -= dt 
+		
 		
 func _physics_process(dt):
 	if (velocidade.x > 0):
@@ -100,7 +114,7 @@ func set_velocidades():
 #	print(velocidade_atual, estado_atual)
 	
 	if (estado_atual >= estado_lista.pulando && is_on_floor()):
-		set_estado(estado_lista.parado)
+		set_estado(estado_lista.andando)
 		
 	if (estado_atual <= estado_lista.correndo):
 		if (abs(velocidade_atual.x) > (globais.vel_terminal.x *2/3 )):
@@ -178,7 +192,7 @@ func pular():
 	$Animation.play("jump")
 	pass
 
-func _on_AreaDano_area_entered(area):
+func _on_AreaDano_area_entered(area):	
 	if (area.has_method("get_tipo")):
 		if (area.get_tipo() == "inimigo"):
 			self.toma_dano(1)

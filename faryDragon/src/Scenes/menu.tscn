@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/img/btn_back.png" type="Texture" id=8]
 
 [node name="menu" type="Node"]
+editor/display_folded = true
 script = ExtResource( 1 )
 
 [node name="bkg_menu" type="Sprite" parent="."]
